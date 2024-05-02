@@ -1,3 +1,5 @@
+
+"use client"
 import Header from "../../header/header";
 import Navbar from "../navigation/navbar";
 import { Button } from "@/components/ui/button";
@@ -13,8 +15,39 @@ import {
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+
+const job = async() => {
+  const res = await fetch("http://localhost:1234/company/post");
+  const data = await res.json();
+  const position = data[0].position;
+  const skills = data[0].skills;
+  const experience = data[0].experience;
+  const salary = data[0].salary;
+  const location = data[0].location;
+  const description = data[0].description;
+
+  if(!data) {
+    console.log("Data not found!");
+  } else {
+    console.log(data);
+    console.log();
+    return {
+      positions: position,
+       skills: skills,
+       experience: experience,
+       salary : salary,
+       location : location,
+       description : description,
+    }
+  }
+}
+
 const arrays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 const show = arrays.map((output) => {
+
+  const jobData = job();
+
+
   return (
     <Drawer>
       <DrawerTrigger>
@@ -22,8 +55,8 @@ const show = arrays.map((output) => {
           <div className="w-full h-10  flex  ">
             <div className="flex justify-start w-1/2 items-center">
               <p className="text-2xl font-bold ml-3 justify-start">
-                Web Developer 
-                {" " + output}
+                Software Engineer - I
+                  {jobData.positions}
               </p>
             </div>
             <div className="flex justify-end w-1/2 items-center">
@@ -107,6 +140,8 @@ const show = arrays.map((output) => {
 });
 
 const Home = () => {
+
+  
   return (
     <>
       <Header />
@@ -120,6 +155,9 @@ const Home = () => {
 
         </div>
       </div>
+
+    {/* <Button onClick= {job}>Fetch User Data</Button> */}
+
     </>
   );
 };

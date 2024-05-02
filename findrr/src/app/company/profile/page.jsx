@@ -1,5 +1,5 @@
 
-
+"use client"
 import { Input } from "@/components/ui/input";
 import Header from "../../header/header";
 import Navbar from "../navigation/navbar";
@@ -9,10 +9,35 @@ import { Ghost } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 // import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
 
 
 
 const page = () => {
+
+  const [name, setName] = useState("");
+  const [logo, setLogo] = useState();
+  const [industry, setIndustry] = useState("");
+  const [size, setSize] = useState("");
+  const [location, setLocation] = useState("");
+  const [website, setWebsite] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [person, setPerson] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [image, setImage] = useState("");
+
+  const compName = (e) => {
+    setName(e);
+    console.log(name);
+  }
+
+  const compLogo = (e) => {
+
+  }
+
   return (
     <>
     <Header />
@@ -39,7 +64,7 @@ const page = () => {
                 <p className="font-semibold text-xl">Company Name*</p>
               </div>
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Input placeholder="Enter company name" />
+                <Input placeholder="Enter company name" onChange = {(e) => compName(e)} />
               </div>
 
               <div className="w-full h-auto  mt-5 flex items-center">

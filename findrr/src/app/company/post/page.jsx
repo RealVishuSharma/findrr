@@ -1,9 +1,78 @@
+
+"use client"
 import Header from "../../header/header";
 import Navbar from "../navigation/navbar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 const Post = () => {
+
+  const [position, setPosition] = useState("");
+  const [skills, setSkills] = useState();
+  const [experience, setExperience] = useState(null);
+  const [salary, setSalary] = useState(null);
+  const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
+
+  const toPost = {
+    position: position,
+    skills: skills,
+    experience: experience,
+    salary: salary,
+    location: location,
+    description: description,
+  }
+
+  const postJob = () => {
+
+    fetch("http://localhost:1234/company/post", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(toPost)
+    }).then((response) => {
+      console.log(response);
+    }).catch((err) => {
+      console.log("Data not saved!" + err);
+    })
+
+    console.log(position, skills, experience, salary, location, description);
+  }
+
+  const jobPosition = (e) => {
+    setPosition(e.target.value);
+    console.log(position);
+  }
+
+  const jobSkills = (e) => {
+    setSkills(e.target.value);
+    console.log(skills);
+  }
+
+  const jobExperience = (e) => {
+    setExperience(e.target.value);
+    console.log(experience);
+  }
+
+  const jobSalary = (e) => {
+    setSalary(e.target.value);
+    console.log(salary);
+  }
+
+  const jobLocation = (e) => {
+    setLocation(e.target.value);
+    console.log(location);
+  }
+
+  const jobDescription = (e) => {
+    setDescription(e.target.value);
+    console.log(description);
+  }
+
+
   return (
     <>
       <Header />
@@ -28,7 +97,7 @@ const Post = () => {
                 <p className="font-semibold text-xl">Job position*</p>
               </div>
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Input placeholder="Enter job position" />
+                <Input placeholder="Enter job position" onChange= {(e) => jobPosition(e)}/>
               </div>
 
               <div className="w-full h-auto   mt-5  mr-3 ">
@@ -37,7 +106,7 @@ const Post = () => {
                   </p>
 
                   <div className="w-full h-auto text-sm  mt-2 ">
-                    <Input placeholder="Enter the skills required for this position" />
+                    <Input placeholder="Enter the skills required for this position" onChange = {(e) => jobSkills(e)} />
                   </div>
                 </div>
 
@@ -47,7 +116,7 @@ const Post = () => {
               </div>
 
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Input placeholder="Enter experience required for this position" />
+                <Input placeholder="Enter experience required for this position" onChange = {(e) => jobExperience(e)} />
               </div>
 
                 <div className="w-full h-auto   mt-5  mr-3">
@@ -56,7 +125,7 @@ const Post = () => {
                   </p>
 
                   <div className="w-full h-auto text-sm  mt-2 ">
-                    <Input placeholder="Enter salary range for this position" />
+                    <Input placeholder="Enter salary range for this position" type= "number" onChange = {(e) => jobSalary(e)} />
                   </div>
                 </div>
 
@@ -67,7 +136,7 @@ const Post = () => {
               </div>
 
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Textarea placeholder="Enter the  Location of the job" />
+                <Textarea placeholder="Enter the  Location of the job"  onChange = {(e) => jobLocation(e)} />
               </div>
 
               <div className="w-full h-auto mt-5">
@@ -77,7 +146,13 @@ const Post = () => {
               </div>
 
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Textarea placeholder="Give the description of the job..." />
+                <Textarea placeholder="Give the description of the job..." onChange = {(e) => jobDescription(e)} />
+              </div>
+
+              <div className="w-full h-auto mt-5">
+                <p className="font-semibold text-xl">
+                  <Button onClick = {postJob} >Post Job</Button>
+                </p>
               </div>
 
             </div>

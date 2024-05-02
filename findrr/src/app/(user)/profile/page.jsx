@@ -1,4 +1,5 @@
 
+"use client"
 import { Input } from "@/components/ui/input";
 import Header from "../../header/header";
 import Navbar from "../navigation/navbar";
@@ -8,10 +9,36 @@ import { Ghost } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
 
 
 
 const Profile = () => {
+
+  const [name, setName] = useState("");
+  const [image, setImage] = useState(null);
+  const [location, setLocation] = useState("");
+  const [role, setRole] = useState(null);
+  const [experience, setExperience] = useState("fresher");
+  const [opento, setOpento] = useState("");
+  const [bio, setBio] = useState("");
+  const [website, setWebsite] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [github, setGithub] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [otherpos, setOtherpos] = useState("");
+  const [prevcomp, setPrevcomp] = useState("");
+  const [prevtitle, setPrevtitle] = useState("");
+  const [startdate, setStartdate] = useState("");
+  const [enddate, setEnddate] = useState("");
+  const [currently, setCurrently] = useState(false);
+  const [description, setDescription] = useState("");
+  const [aboutpos, setAboutpos] = useState("");
+  const[uni, setUni] = useState("");
+  const [degree, setDegree] = useState("");
+  const [major, setMajor] = useState("");
+
+
   return (
     <>
       <Header />
@@ -59,7 +86,7 @@ const Profile = () => {
               </div>
 
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Input placeholder="Enter your name" />
+                <Input placeholder="Enter your location" />
               </div>
 
               <div className="w-full h-auto  mt-5 flex items-center">
@@ -69,7 +96,7 @@ const Profile = () => {
                   </p>
 
                   <div className="w-full h-auto text-sm  mt-2 ">
-                    <Input placeholder="Enter your name" />
+                    <Input placeholder="Enter your primary name" />
                   </div>
                 </div>
 
@@ -77,7 +104,7 @@ const Profile = () => {
                   <p className="font-semibold text-xl">Years of Experience*</p>
 
                   <div className="w-full h-auto text-sm  mt-2 ">
-                    <Input placeholder="Enter your name" />
+                    <Input placeholder="Enter your exprience" />
                   </div>
                 </div>
               </div>
@@ -89,7 +116,7 @@ const Profile = () => {
               </div>
 
               <div className="w-full h-auto text-sm  mt-2 ">
-                <Input placeholder="Enter your name" />
+                <Input placeholder="Enter the roles you are open to" />
               </div>
 
               <div className="w-full h-auto  mt-5">
