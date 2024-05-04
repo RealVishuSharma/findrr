@@ -6,16 +6,16 @@ const CompanySchema = new mongoose.Schema({
         type: String,
         // required: [true, "Please Enter Company's Name!"]
     },
-    logo: {
-        type: String,
-        // required: [true, "Please Enter Company's Logo"],
-    },
+    // logo: {
+    //     type: String,
+    //     // required: [true, "Please Enter Company's Logo"],
+    // },
     industry: {
         type: String,
         // required: [true, "Please Enter Company's Industry"],
     },
     size: {
-        type: Number,
+        type: String,
         // required: [true, "Please Enter Company's Size"],
     },
     location: {
@@ -43,12 +43,12 @@ const CompanySchema = new mongoose.Schema({
         // required: [true, "Please Enter Company's Email"],
     },
     phone: {
-        type: Number,
+        type: String, 
         // required: [true, "Please Enter Company's Phone Number"],
     },
-    media: {
-        type: Array,
-    }
+    // media: {
+    //     type: Array,
+    // }
 })
 
 const CompanyData = mongoose.model("Companies", CompanySchema);

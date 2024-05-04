@@ -14,4 +14,12 @@ const createCompany = async(req, res) => {
     }
 };
 
-module.exports = {createCompany};
+const fetchCompany = async (req, res) => {
+    try {
+        const company = await 
+    } catch (error) {
+        
+    }
+};
+
+module.exports = {createCompany, fetchCompany};

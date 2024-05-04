@@ -6,6 +6,7 @@ const companyControl = require("../controllers/companyController");
 const jobControl = require("../controllers/jobsController");
 
 router.post("/", companyControl.createCompany);
+router.post("/login", companyControl.fetchCompany);
 router.get("/post", jobControl.fetchJob);
 router.post("/post", jobControl.createJob);
 

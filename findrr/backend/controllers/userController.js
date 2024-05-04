@@ -22,7 +22,7 @@ const UserData = require("../models/userModel");
     try {
         const users = await  UserData.find();
         res.json(users);
-        const email = req.session.``
+        const email = req.session.email;
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
